@@ -1,12 +1,12 @@
 import {  ButtonChecked, ButtonErase, TodoInputStyled, TodoItemStyled } from "../../styles/TodoListApp.styled";
 
 
-const TodoItem = ({value, }) => {
+const TodoItem = ({value, deleteTask}) => {
     return (
         <TodoItemStyled>
         <TodoInputStyled value={value} disabled />
         <div>
-        <ButtonErase />
+        <ButtonErase onClick={deleteTask} />
         <ButtonChecked />
         </div>
         </TodoItemStyled>

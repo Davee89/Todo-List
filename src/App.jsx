@@ -11,21 +11,28 @@ function App() {
   setInputText(e.target.value)  
 }
 
-  const onClickHandler = () => {
+  const addTask = () => {
+  if (!inputText) return
+  let number = todosList.length + 1
   const newTodo = {
-    id: Math.floor((Math.random() * 100000) + 1) ,
+    id: number ,
     name: inputText
   }
-  setTodosList((prevTodos) => {
-   return [...prevTodos, newTodo]
-  })
+  setTodosList([...todosList, newTodo])
   setInputText('')
   }
 
+const deleteTask = (id) => {
+let newTasks = todosList.filter(todo => todo.id !== id)
+setTodosList([...newTasks])
+} 
+
+
+
   return (
   <Card>
-  <TodoInput onClickHandler={onClickHandler} value={inputText} onChangeHandler={onChangeHandler} />
-  <TodoList todosList={todosList}/>
+  <TodoInput onClickHandler={addTask} value={inputText} onChangeHandler={onChangeHandler} />
+  <TodoList todosList={todosList} deleteTask={deleteTask}/>
   </Card>
   )
     
