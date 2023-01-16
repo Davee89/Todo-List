@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoInput from "./components/TodoInput/TodoInput";
 import TodoList from "./components/TodoList/TodoList";
 import Card from "./components/ui/Card";
@@ -7,11 +7,29 @@ function App() {
   const [inputText, setInputText] = useState("");
   const [todosList, setTodosList] = useState([]);
 
+  // ! Updating name of task when getting edited
+  const updateTodoName = (updatedValue, id) => {
+    const newTasks = todosList.map((todo) => (todo.id === id ? { ...todo, name: updatedValue } : todo));
+    setTodosList([...newTasks]);
+  };
+
+  // ! Getting previous todo list from LocalStorage
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("storedTasks"))) setTodosList([...JSON.parse(localStorage.getItem("storedTasks"))]);
+  }, []);
+
+  // ! Updating current todo list to LocalStorage
+  useEffect(() => {
+    localStorage.setItem("storedTasks", JSON.stringify(todosList));
+  }, [todosList]);
+
   const onChangeHandler = (e) => {
     setInputText(e.target.value);
   };
 
-  const addTask = () => {
+  // ! TODO FUNCTIONS !
+
+  const addTodo = () => {
     if (!inputText) return;
     const newTodo = {
       id: Math.floor(Math.random() * 100000 + 1),
@@ -23,7 +41,7 @@ function App() {
     setInputText("");
   };
 
-  const deleteTask = (id) => {
+  const deleteTodo = (id) => {
     let newTasks = todosList.filter((todo) => todo.id !== id);
     setTodosList([...newTasks]);
   };
@@ -46,8 +64,8 @@ function App() {
 
   return (
     <Card>
-      <TodoInput value={inputText} onClickHandler={addTask} onChangeHandler={onChangeHandler} />
-      <TodoList editTodo={editTodo} todosList={todosList} deleteTask={deleteTask} markTodo={markTodo} />
+      <TodoInput value={inputText} onClickHandler={addTodo} onChangeHandler={onChangeHandler} />
+      <TodoList updateTodoName={updateTodoName} editTodo={editTodo} todosList={todosList} deleteTask={deleteTodo} markTodo={markTodo} />
     </Card>
   );
 }

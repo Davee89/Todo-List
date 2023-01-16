@@ -1,19 +1,26 @@
-import { useState } from "react";
 import { ButtonChecked, ButtonEdit, ButtonErase, TodoInputStyled, TodoItemStyled } from "../../styles/TodoListApp.styled";
+import { useEffect, useState } from "react";
+import { debounce } from "lodash";
+import React from "react";
 
-const TodoItem = ({ deleteTask, markTodo, completed, value, disabled, editTodo }) => {
+const TodoItem = ({ deleteTask, markTodo, completed, value, disabled, editTodo, updateTodoName, id }) => {
   const [updatedText, setUpdatedText] = useState("");
 
-  const updateTodoItem = (e) => {
+  const updateTodoText = (e) => {
     setUpdatedText(e.target.value);
   };
 
+  // ! Passing state up when edit happened to update name in TodosList array
+  useEffect(() => {
+    if (updatedText) updateTodoName(updatedText, id);
+  }, [updatedText]);
+
   return (
     <TodoItemStyled>
-      <TodoInputStyled onChange={updateTodoItem} value={updatedText || value} disabled={disabled} completed={completed} />
+      <TodoInputStyled onChange={updateTodoText} value={updatedText || value} disabled={disabled} completed={completed} />
       <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
-        <ButtonEdit completed={completed} editable={disabled} onClick={editTodo} />
         <ButtonErase onClick={deleteTask} />
+        <ButtonEdit completed={completed} editable={disabled} onClick={editTodo} />
         <ButtonChecked completed={completed} onClick={markTodo} />
       </div>
     </TodoItemStyled>

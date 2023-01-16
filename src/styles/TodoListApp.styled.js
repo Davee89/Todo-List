@@ -4,6 +4,7 @@ import checkedIconGreen from "../../public/checked-green.png";
 import edit from "../../public/edit.png";
 import editChecked from "../../public/edit-checked.png";
 
+// ! INPUTS STYLING
 export const TodoInputAdd = styled.input.attrs((props) => {
   placeholder: props.placeholder;
   type: props.type;
@@ -27,6 +28,7 @@ export const TodoInputStyled = styled.input.attrs((props) => {
   opacity: ${({ completed }) => (completed ? 0.3 : 1)};
 `;
 
+// ! CONTAINERS STYLING
 export const TodoListStyled = styled.div`
   background-color: lightgrey;
   display: flex;
@@ -63,6 +65,7 @@ export const TodoItemStyled = styled.div`
   min-width: 40%;
 `;
 
+// ! BUTTONS STYLING
 const ButtonCss = css`
   background-size: cover;
   background-color: lightgray;
@@ -75,7 +78,7 @@ export const ButtonChecked = styled.button`
   ${ButtonCss}
   background-image: ${({ completed }) => (completed ? `url(${checkedIconGreen})` : `url(${checkedIcon})`)};
   :hover {
-    background-image: url("/public/checked-green.png");
+    background-image: url("/checked-green.png");
   }
 `;
 
@@ -110,14 +113,14 @@ export const ButtonErase = styled.button`
     }
   }
 
-  background-image: url("../../public/remove.png");
+  background-image: url("/remove.png");
 
   :hover {
     animation: vibrate-1 0.4s linear infinite both;
   }
 `;
 export const ButtonAdd = styled.button`
-  background-image: url("../../public/add.png");
+  background-image: url("/add.png");
   background-size: cover;
   background-color: lightgray;
   border: none;
