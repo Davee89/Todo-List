@@ -11,28 +11,35 @@ export const TodoInputAdd = styled.input.attrs((props) => {
   value: props.value;
 })`
   padding: 10px 15px;
-  background-color: lightgray;
+  background-color: white;
   border: none;
   text-align: center;
   min-width: 40%;
-  height: 20px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  font-size: 20px;
+  color: black;
 `;
 export const TodoInputStyled = styled.input.attrs((props) => {
   disabled: props.disabled;
   value: props.value;
 })`
-  background-color: lightgray;
+  font-size: 20px;
+  text-transform: capitalize;
+  background-color: white;
   padding: 5px;
   border: none;
   max-width: 60%;
+  text-decoration: ${({ completed }) => (completed ? "line-through" : "none")};
   opacity: ${({ completed }) => (completed ? 0.3 : 1)};
+  color: ${({ disabled }) => (disabled ? "black" : "orange")};
 `;
 
 // ! CONTAINERS STYLING
 export const TodoListStyled = styled.div`
-  background-color: lightgrey;
   display: flex;
   flex-direction: column;
+  min-width: 51%;
 `;
 
 export const CardStyled = styled.div`
@@ -45,33 +52,35 @@ export const CardStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: radial-gradient(white, lightgreen, green);
+  min-height: 60vh;
 `;
 export const InputContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  min-width: 100%;
 `;
 
 export const TodoItemStyled = styled.div`
   padding: 10px;
-  background-color: lightgray;
+  background-color: white;
   font-size: 15px;
   letter-spacing: 1px;
   border-bottom: black solid 1px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 40%;
 `;
 
 // ! BUTTONS STYLING
 const ButtonCss = css`
   background-size: cover;
-  background-color: lightgray;
+  background-color: white;
   border: none;
-  width: 15px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
 `;
 
 export const ButtonChecked = styled.button`
@@ -122,8 +131,12 @@ export const ButtonErase = styled.button`
 export const ButtonAdd = styled.button`
   background-image: url("/add.png");
   background-size: cover;
-  background-color: lightgray;
+  background-color: white;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 0 5px 5px 0;
+  :hover {
+    background-blend-mode: difference;
+  }
 `;

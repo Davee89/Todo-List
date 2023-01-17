@@ -1,6 +1,5 @@
 import { ButtonChecked, ButtonEdit, ButtonErase, TodoInputStyled, TodoItemStyled } from "../../styles/TodoListApp.styled";
 import { useEffect, useState } from "react";
-import { debounce } from "lodash";
 import React from "react";
 
 const TodoItem = ({ deleteTask, markTodo, completed, value, disabled, editTodo, updateTodoName, id }) => {

@@ -20,7 +20,9 @@ function App() {
 
   // ! Updating current todo list to LocalStorage
   useEffect(() => {
-    localStorage.setItem("storedTasks", JSON.stringify(todosList));
+    setTimeout(() => {
+      localStorage.setItem("storedTasks", JSON.stringify(todosList));
+    }, 1000);
   }, [todosList]);
 
   const onChangeHandler = (e) => {
