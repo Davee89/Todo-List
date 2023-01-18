@@ -1,5 +1,5 @@
 import { CardStyled } from "../../styles/TodoListApp.styled";
 
-const Card = ({children}) => <CardStyled>{children}</CardStyled>
+const Card = ({ children }) => <CardStyled>{children}</CardStyled>;
 
-export default Card
+export default Card;
