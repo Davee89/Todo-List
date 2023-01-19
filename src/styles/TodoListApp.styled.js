@@ -6,9 +6,9 @@ import editChecked from "../../public/edit-checked.png";
 
 // ! INPUTS STYLING
 export const TodoInputAdd = styled.input.attrs(({ placeholder, type, value }) => {
-	placeholder: placeholder;
-	type: type;
-	value: value;
+	placeholder;
+	type;
+	value;
 })`
 	padding: 10px 15px;
 	background-color: white;
@@ -21,8 +21,8 @@ export const TodoInputAdd = styled.input.attrs(({ placeholder, type, value }) =>
 	color: black;
 `;
 export const TodoInputStyled = styled.input.attrs(({ disabled, value }) => {
-	disabled: disabled;
-	value: value;
+	disabled;
+	value;
 })`
 	font-size: 20px;
 	text-transform: capitalize;

@@ -10,7 +10,7 @@ function App() {
 	// ! Updating name of task when getting edited
 	const updateTodoName = (updatedValue, id) => {
 		const newTasks = todosList.map(todo => (todo.id === id ? { ...todo, name: updatedValue } : todo));
-		setTodosList([...newTasks]);
+		setTodosList(newTasks);
 	};
 
 	// ! Getting previous todo list from LocalStorage
@@ -45,8 +45,8 @@ function App() {
 	};
 
 	const deleteTodo = id => {
-		let newTasks = todosList.filter(todo => todo.id !== id);
-		setTodosList([...newTasks]);
+		const newTasks = todosList.filter(todo => todo.id !== id);
+		setTodosList(newTasks);
 	};
 
 	const markTodo = id => {
@@ -57,7 +57,7 @@ function App() {
 				? { ...todo, completed: false }
 				: todo,
 		);
-		setTodosList([...newTasks]);
+		setTodosList(newTasks);
 	};
 
 	const editTodo = id => {

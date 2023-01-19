@@ -2,7 +2,7 @@ import { TodoListStyled } from "../../styles/TodoListApp.styled";
 import TodoItem from "../TodoItem/TodoItem";
 
 const TodoList = ({ todosList, deleteTask, markTodo, editTodo, updateTodoName }) => {
-	const tasksList = todosList.map(({ id, name, disabled, completed, id }) => (
+	const tasksList = todosList.map(({ id, name, disabled, completed }) => (
 		<TodoItem
 			key={id}
 			value={name}
